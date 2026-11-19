@@ -35,8 +35,8 @@ df4 = pd.DataFrame({
     "With GST Cost": [5615940, 2728084, 269759],
     "Installed Solar (kW)": [150.0, 70.0, 71.0],
     "Rate per Unit": [21.8, 7.0, 8.5],
-    "Total Unit": [142044.0, 48543.0, 5531.0],  # recomputed below from the monthly columns
-    "Total Recovery": [2859963.0, 339801.0, 47013.5],  # recomputed below for Bhiwandi/Raliawas
+    "Total Unit": [534002.0, 140606.0, 71690.0],  # recomputed below from the monthly columns
+    "Total Recovery": [2859963.0, 984242.0, 609365.0],  # recomputed below for Bhiwandi/Raliawas
 
     # --------------------------------------------------------
     # Monthly data
@@ -148,6 +148,11 @@ df4 = pd.DataFrame({
     "Sep 26 Amount Saved": [281637.18, 47194.0, 43766.25],
     "Sep 26 Performance %": [70.0, 0.8, 0.6],
     "Sep 26 Unit per KW": [2.8, 3.1, 2.4],
+
+    "Oct 26 Solar Units": [16038.0, 6273.0, 6715.0],
+    "Oct 26 Amount Saved": [349307.6, 43911.0, 55398.8],
+    "Oct 26 Performance %": [86.0, 72.0, 76.0],
+    "Oct 26 Unit per KW": [3.4, 2.9, 3.1],
 })
 
 # Normalize location names for consistency
@@ -159,7 +164,7 @@ df4["Location"] = df4["Location"].replace({
 # ------------------------------------------------------------------
 # Keep "Total Recovery" in sync with the monthly columns.
 #
-# Bhiwandi and Raliawas have a complete Mar-25..Sep-26 monthly history, so
+# Bhiwandi and Raliawas have a complete Mar-25..Oct-26 monthly history, so
 # their Total Recovery is recomputed as the sum of those columns — this is
 # what pulls the April-2026 correction above through into every total.
 # Surat only has monthly tracking from June 2026 onward; its Total Recovery
@@ -253,6 +258,7 @@ def _build_monthly(source: pd.DataFrame) -> pd.DataFrame:
         ("Jul 26", "Jul 26 Solar Units", "Jul 26 Amount Saved", "Jul 26 Performance %", "Jul 26 Unit per KW"),
         ("Aug 26", "Aug 26 Solar Units", "Aug 26 Amount Saved", "Aug 26 Performance %", "Aug 26 Unit per KW"),
         ("Sep 26", "Sep 26 Solar Units", "Sep 26 Amount Saved", "Sep 26 Performance %", "Sep 26 Unit per KW"),
+        ("Oct 26", "Oct 26 Solar Units", "Oct 26 Amount Saved", "Oct 26 Performance %", "Oct 26 Unit per KW"),
     ]
 
     records = []
